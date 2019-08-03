@@ -1,20 +1,13 @@
 <script>
-	import '../node_modules/milligram/dist/milligram.min.css';
-	import { Router, Link, Route } from "svelte-routing";
+	import '../node_modules/milligram/dist/milligram.min.css'
+	import { Router, Route } from 'svelte-routing'
 
-	import Navbar from './Navbar.svelte';
-	import Home from './Home.svelte';
-	import Login from './Login.svelte';
-	import Signup from './Signup.svelte';
-	import Detail from './Detail.svelte';
-	import PostForm from './PostForm.svelte';
-
-	import { userStore } from './store';
-
-	let user;
-  const unsubscribe = userStore.subscribe(value => {
-    user = value
-  });
+	import Navbar from './Navbar.svelte'
+	import Home from './Home.svelte'
+	import Login from './Login.svelte'
+	import Signup from './Signup.svelte'
+	import Detail from './Detail.svelte'
+	import PostForm from './PostForm.svelte'
 </script>
 
 <style>
@@ -24,17 +17,16 @@
 </style>
 
 <Router>
-<div class="container">
-	<Navbar></Navbar>
-	<div>
-    <Route path="/" component={ Home } />
-		<Route path="/login" component={ Login } />
-		<Route path="/register" component={ Signup } />
-    <Route path="/u/:username" component={ Home } />
-    <Route path="/a/:category" component={ Home } />
-    <Route path="/a/:category/:postId" component={ Detail } />
-    <Route path="/compose" component={ PostForm } />
+	<div class="container">
+		<Navbar></Navbar>
+		<div>
+			<Route path="/" component={ Home } />
+			<Route path="/login" component={ Login } />
+			<Route path="/register" component={ Signup } />
+			<Route path="/u/:username" component={ Home } />
+			<Route path="/a/:category" component={ Home } />
+			<Route path="/a/:category/:postId" component={ Detail } />
+			<Route path="/compose" component={ PostForm } />
+		</div>
 	</div>
-</div>
-
 </Router>

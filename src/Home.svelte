@@ -1,30 +1,29 @@
 <script>
-	import { onMount } from 'svelte';
-	import { Link } from "svelte-routing";
-	import Post from './Post.svelte';
-	import { userStore } from './store';
+	import { Link } from 'svelte-routing'
+	import Post from './Post.svelte'
+	import { userStore } from './store'
 
-	export let username = null, category = null;
+	export let username = null; const category = null
 	let posts = []
 
 	const fetchPost = async ({ username, category }) => {
-		let url = 'http://local.host:8080/api'
+	  let url = 'http://local.host:8080/api'
 
-		if (username) url += `/user/${username}`
-		else if (category) url += `/posts/${category}`
-		else url += '/posts'
+	  if (username) url += `/user/${username}`
+	  else if (category) url += `/posts/${category}`
+	  else url += '/posts'
 
-		const res = await fetch(url)
-		if (!res.ok) return alert('Something wrong!');
-		posts = await res.json()
+	  const res = await fetch(url)
+	  if (!res.ok) return alert('Something wrong!')
+	  posts = await res.json()
 	}
 
-	$: fetchPost({ username, category });
+	$: fetchPost({ username, category })
 
-  let user;
-  const unsubscribe = userStore.subscribe(value => {
-    if(value) user = value
-  });
+	let user
+	userStore.subscribe(value => {
+	  if (value) user = value
+	})
 </script>
 
 <div class="row">

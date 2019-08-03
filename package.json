@@ -1,7 +1,14 @@
 {
-  "name": "svelte-app",
+  "name": "reddit-clone-svelte",
   "version": "1.0.0",
   "devDependencies": {
+    "eslint": "^6.1.0",
+    "eslint-config-standard": "^13.0.1",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-node": "^9.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "eslint-plugin-svelte3": "^2.7.3",
     "jsonwebtoken": "^8.5.1",
     "jwt-decode": "^2.2.0",
     "luxon": "^1.17.1",
@@ -27,5 +34,13 @@
     "dev": "run-p start:dev autobuild",
     "start": "sirv public --single",
     "start:dev": "sirv public --single --dev"
-  }
+  },
+  "main": "public/index.html",
+  "keywords": [
+    "reddit",
+    "clone",
+    "svelte"
+  ],
+  "author": "Husnul Anwari <husnulhamidiah@gmail.com>",
+  "license": "MIT"
 }

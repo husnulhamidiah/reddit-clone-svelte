@@ -1,31 +1,30 @@
 <script>
-  import { onMount } from 'svelte'
   import Post from './Post.svelte'
   import Comment from './Comment.svelte'
   import CommentForm from './CommentForm.svelte'
-  import { userStore } from './store';
+  import { userStore } from './store'
 
-  export let category = null, postId = null;
+  export let category = null; const postId = null
   let post = null
 
-  let user;
-  const unsubscribe = userStore.subscribe(value => {
+  let user
+  userStore.subscribe(value => {
     user = value
-  });
+  })
 
   const fetchPost = async ({ postId }) => {
-    let url = `http://local.host:8080/api/post/${postId}`
+    const url = `http://local.host:8080/api/post/${postId}`
 
     const res = await fetch(url)
-    if (!res.ok) return alert('Something wrong!');
+    if (!res.ok) return alert('Something wrong!')
     post = await res.json()
   }
 
   $: fetchPost({ postId })
 
   const updateComment = (event) => {
-		post = event.detail
-	}
+    post = event.detail
+  }
 </script>
 
 {#if post}

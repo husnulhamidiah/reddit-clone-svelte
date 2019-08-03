@@ -1,31 +1,30 @@
 <script>
-  import { Link, navigate } from "svelte-routing";
+  import { Link, navigate } from 'svelte-routing'
   import moment from 'moment'
-  import { userStore } from './store';
-  import Comment from './Comment.svelte'
+  import { userStore } from './store'
 
-  export let post = {};
-  export let withDetails = false;
+  export let post = {}
+  export let withDetails = false
 
-  let user = {};
-  const unsubscribe = userStore.subscribe(value => {
-    if(value) user = value
-  });
+  let user = {}
+  userStore.subscribe(value => {
+    if (value) user = value
+  })
 
   const vote = async (state) => {
-    const url = `http://local.host:8080/api/post/${post.id}/${state}`;
+    const url = `http://local.host:8080/api/post/${post.id}/${state}`
     const token = localStorage.getItem('token')
 
     const res = await fetch(url, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`
+        Authorization: `Bearer ${token}`
       }
     })
 
-    if (!res.ok) alert('Invalid credentials');
-    const data = await res.json();
+    if (!res.ok) alert('Invalid credentials')
+    const data = await res.json()
     post.score = data.score
     post.upvotePercentage = data.upvotePercentage
   }
@@ -34,19 +33,19 @@
   const downvote = () => vote('downvote')
 
   const removePost = async () => {
-    const url = `http://local.host:8080/api/post/${post.id}`;
+    const url = `http://local.host:8080/api/post/${post.id}`
     const token = localStorage.getItem('token')
 
     const res = await fetch(url, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`
+        Authorization: `Bearer ${token}`
       }
     })
 
-    if (!res.ok) alert('Something went wrong');
-    return navigate('/');
+    if (!res.ok) alert('Something went wrong')
+    return navigate('/')
   }
 </script>
 

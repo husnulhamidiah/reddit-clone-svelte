@@ -1,32 +1,32 @@
 <script>
-  import { createEventDispatcher } from 'svelte';
+  import { createEventDispatcher } from 'svelte'
 
-  export let id;
-  const dispatch = createEventDispatcher();
+  export let id
+  const dispatch = createEventDispatcher()
 
   const createComment = async (event) => {
     event.preventDefault()
-    const form = document.getElementById('comment');
-    const formData = new FormData(form);
-    form.reset();
+    const form = document.getElementById('comment')
+    const formData = new FormData(form)
+    form.reset()
 
-    const url = `http://local.host:8080/api/post/${id}`;
+    const url = `http://local.host:8080/api/post/${id}`
     const token = localStorage.getItem('token')
 
     const res = await fetch(url, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`
+        Authorization: `Bearer ${token}`
       },
       body: JSON.stringify({
         comment: formData.get('comment')
-      }),
+      })
     })
 
-    if (!res.ok) alert('Something went wrong!');
-    const post = await res.json();
-    dispatch('update-comment', post);
+    if (!res.ok) alert('Something went wrong!')
+    const post = await res.json()
+    dispatch('update-comment', post)
   }
 </script>
 

@@ -1,42 +1,47 @@
 <script>
   import { onMount } from 'svelte'
-  import { navigate } from "svelte-routing";
-  import { userStore } from './store';
-  import decode from 'jwt-decode';
+  import { navigate } from 'svelte-routing'
+  import { userStore } from './store'
+  import decode from 'jwt-decode'
+
+  let user
+  userStore.subscribe(value => {
+    user = value
+  })
 
   onMount(() => {
-    if($userStore) navigate('/')
+    if (user) navigate('/')
   })
 
   const login = async (event) => {
-    event.preventDefault();
-    const form = document.getElementById('login');
-    const formData = new FormData(form);
-    form.reset();
+    event.preventDefault()
+    const form = document.getElementById('login')
+    const formData = new FormData(form)
+    form.reset()
 
-    const url = 'http://local.host:8080/api/login';
+    const url = 'http://local.host:8080/api/login'
     const res = await fetch(url, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify({
         username: formData.get('username'),
         password: formData.get('password')
-      }),
+      })
     })
 
-    if (!res.ok) alert('Invalid credentials');
-    const { token } = await res.json();
+    if (!res.ok) alert('Invalid credentials')
+    const { token } = await res.json()
 
     try {
-      userStore.update(() => decode(token).user);
-      localStorage.setItem('token', token);
+      userStore.update(() => decode(token).user)
+      localStorage.setItem('token', token)
     } catch (error) {
-      console.log(error);
+      console.log(error)
     }
 
-    return navigate('/');
+    return navigate('/')
   }
 </script>
 

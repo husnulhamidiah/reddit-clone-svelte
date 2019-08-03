@@ -1,3 +1,47 @@
+<script>
+  import { onMount } from 'svelte'
+  import { navigate } from 'svelte-routing'
+  import { userStore } from './store'
+
+  let scoops = 'link'
+  let user
+  userStore.subscribe(value => {
+    user = value
+  })
+
+  onMount(() => {
+    if (!user) navigate('/')
+  })
+
+  const createPost = async (event) => {
+    event.preventDefault()
+    const form = document.getElementById('create-post')
+    const formData = new FormData(form)
+    form.reset()
+
+    const token = localStorage.getItem('token')
+
+    const url = 'http://local.host:8080/api/posts'
+    const res = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`
+      },
+      body: JSON.stringify({
+        type: formData.get('type'),
+        category: formData.get('category'),
+        title: formData.get('title'),
+        url: formData.get('url'),
+        text: formData.get('text')
+      })
+    })
+
+    if (!res.ok) alert('Something went wrong!')
+    return navigate('/')
+  }
+</script>
+
 <style>
   label {
     font-display: normal;
@@ -56,47 +100,6 @@
     left: 0;
   }
 </style>
-
-<script>
-  import { onMount } from 'svelte'
-  import { navigate } from "svelte-routing";
-  import { userStore } from './store';
-
-  onMount(() => {
-    if(!$userStore) navigate('/')
-  })
-
-  let scoops = 'link';
-
-  const createPost = async (event) => {
-    event.preventDefault();
-    const form = document.getElementById('create-post');
-    const formData = new FormData(form);
-    form.reset();
-
-    const token = localStorage.getItem('token')
-
-    const url = 'http://local.host:8080/api/posts';
-    const res = await fetch(url, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`
-      },
-      body: JSON.stringify({
-        type: formData.get('type'),
-        category: formData.get('category'),
-        title: formData.get('title'),
-        url: formData.get('url'),
-        text: formData.get('text')
-      }),
-    })
-
-    if (!res.ok) alert('Something went wrong!');
-
-    return navigate('/');
-  }
-</script>
 
 <form id="create-post">
   <fieldset>

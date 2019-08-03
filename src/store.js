@@ -1,9 +1,9 @@
-import { writable } from 'svelte/store';
-import decode from 'jwt-decode';
+import { writable } from 'svelte/store'
+import decode from 'jwt-decode'
 
-let payload;
+let payload
 
-const token = localStorage.getItem('token');
+const token = localStorage.getItem('token')
 
 if (token) {
   try {
@@ -13,4 +13,4 @@ if (token) {
   }
 }
 
-export const userStore = writable(payload);
+export const userStore = writable(payload)

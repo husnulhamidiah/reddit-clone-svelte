@@ -1,20 +1,19 @@
 <script>
-  import { Link } from "svelte-routing";
-  import { userStore } from './store';
+  import { Link } from 'svelte-routing'
+  import { userStore } from './store'
 
-  let user;
-  const unsubscribe = userStore.subscribe(value => {
+  let user
+  userStore.subscribe(value => {
     user = value
-  });
+  })
 
   const logout = () => {
     localStorage.removeItem('token')
     userStore.update(() => undefined)
-  };
+  }
 
-  let categories = ['tech', 'programming', 'dota2', 'underlords', 'gif', 'android'];
+  const categories = ['tech', 'programming', 'dota2', 'underlords', 'gif', 'android']
 </script>
-
 
 <style>
   .navbar {

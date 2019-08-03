@@ -1,34 +1,34 @@
 <script>
-  import { createEventDispatcher } from 'svelte';
+  import { createEventDispatcher } from 'svelte'
   import moment from 'moment'
-  import { userStore } from './store';
+  import { userStore } from './store'
 
-  export let id, comments;
-  const dispatch = createEventDispatcher();
+  export let id, comments
+  const dispatch = createEventDispatcher()
 
-  let user = {};
-  const unsubscribe = userStore.subscribe(value => {
-    if(value) user = value
-  });
+  let user = {}
+  userStore.subscribe(value => {
+    if (value) user = value
+  })
 
   const removeComment = async (event) => {
     event.preventDefault()
     const { srcElement: { id: commentId } } = event
 
-    const url = `http://local.host:8080/api/post/${id}/${commentId}`;
+    const url = `http://local.host:8080/api/post/${id}/${commentId}`
     const token = localStorage.getItem('token')
 
     const res = await fetch(url, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`
+        Authorization: `Bearer ${token}`
       }
     })
 
-    if (!res.ok) alert('Something went wrong!');
-    const post = await res.json();
-    dispatch('update-comment', post);
+    if (!res.ok) alert('Something went wrong!')
+    const post = await res.json()
+    dispatch('update-comment', post)
   }
 </script>
 
