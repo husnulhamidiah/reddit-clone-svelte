@@ -1,0 +1,125 @@
+<script>
+  import { Link, navigate } from "svelte-routing";
+  import moment from 'moment'
+  import { userStore } from './store';
+  import Comment from './Comment.svelte'
+
+  export let post = {};
+  export let withDetails = false;
+
+  let user = {};
+  const unsubscribe = userStore.subscribe(value => {
+    if(value) user = value
+  });
+
+  const vote = async (state) => {
+    const url = `http://local.host:8080/api/post/${post.id}/${state}`;
+    const token = localStorage.getItem('token')
+
+    const res = await fetch(url, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      }
+    })
+
+    if (!res.ok) alert('Invalid credentials');
+    const data = await res.json();
+    post.score = data.score
+    post.upvotePercentage = data.upvotePercentage
+  }
+
+  const upvote = () => vote('upvote')
+  const downvote = () => vote('downvote')
+
+  const removePost = async () => {
+    const url = `http://local.host:8080/api/post/${post.id}`;
+    const token = localStorage.getItem('token')
+
+    const res = await fetch(url, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      }
+    })
+
+    if (!res.ok) alert('Something went wrong');
+    return navigate('/');
+  }
+</script>
+
+<style>
+	.content {
+    display: flex;
+  }
+  .content .post-container {
+    width: 100%;
+  }
+  .content .voting-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60px;
+    padding: 5px;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 400;
+    text-align: center;
+  }
+  .content .voting-container .upvote-button,
+  .content .voting-container .downvote-button {
+    transform: rotate(90deg);
+    cursor: pointer;
+  }
+	.content .post-container .post-preview {
+		font-size: 14px;
+	}
+	.content .post-container .post-detail {
+		font-size: 14px;
+  }
+  .content .post-container .post-metadata {
+		font-size: 12px;
+  }
+  .separator {
+    margin-bottom: 20px;
+  }
+  .remove-button {
+    cursor: pointer;
+  }
+</style>
+
+<div class="content">
+  <div class="voting-container">
+    <span class="upvote-button"><span on:click={ upvote }>❮</span></span>
+    <span>{ post.score }</span>
+    <span class="downvote-button"><span on:click={ downvote }>❯</span></span>
+  </div>
+
+  <div class="post-container">
+    <div class="post-title">
+      <a href="{ post.url }" target="_blank">{ post.title }</a>
+    </div>
+
+    <div class="post-preview">{ post.url || post.text }</div>
+
+    <div class="post-detail" class:separator={ !withDetails }>
+      <Link to="/a/{ post.category }/{ post.id }">{ post.comments.length } comments</Link> ·
+      <Link to="/a/{ post.category }">/a/{ post.category }</Link> ·
+      <span>by</span>
+      <Link to="/u/{ post.author.username }">{ post.author.username }</Link> ·
+      <span>{ moment(post.created).fromNow() }</span>
+    </div>
+
+    {#if withDetails}
+      <div class="post-metadata">
+        <span>{ post.views } views</span> · <span>{ post.upvotePercentage }% upvoted</span>
+        {#if post.author.id === user.id }
+          <span id={ post.id } class="remove-button float-right" on:click={ removePost }>Delete</span>
+        {/if}
+      </div>
+      <hr>
+    {/if}
+  </div>
+</div>
