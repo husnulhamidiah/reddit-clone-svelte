@@ -51,7 +51,8 @@
 
 <style>
 	.content {
-    display: flex;
+    display: grid;
+    grid-template-columns: 4em auto;
   }
   .content .post-container {
     width: 100%;
@@ -60,12 +61,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 60px;
-    padding: 5px;
+    padding: .3em 0;
     font-size: 14px;
-    line-height: 20px;
+    line-height: 1.5em;
     font-weight: 400;
     text-align: center;
+    justify-self: center;
   }
   .content .voting-container .upvote-button,
   .content .voting-container .downvote-button {
@@ -82,7 +83,7 @@
 		font-size: 12px;
   }
   .separator {
-    margin-bottom: 20px;
+    margin-bottom: 1.5em;
   }
   .remove-button {
     cursor: pointer;

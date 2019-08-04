@@ -17,17 +17,17 @@
 
 <style>
   .navbar {
-    padding-bottom: 5px;
-    border-bottom: 1px solid #d1d1d1;
-    margin-top: 30px;
+    padding-bottom: .4em;
+    border-bottom: .1em solid #d1d1d1;
+    margin-top: 2em;
   }
-  .navbar .float-right .navbar-item { margin-left: 20px; }
+  .navbar .float-right .navbar-item { margin-left: 1.2em; }
   .categories-container {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: 10px 0 5px 0;
-    margin-bottom: 30px;
+    padding: .6em 0 .3em 0;
+    margin-bottom: 2em;
   }
 </style>
 

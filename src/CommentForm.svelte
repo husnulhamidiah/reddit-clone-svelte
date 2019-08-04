@@ -32,14 +32,10 @@
 
 <style>
   .content {
-    display: flex;
-  }
-  .content .post-container {
     width: 100%;
-    margin-left: 55px;
   }
   .comment-form {
-    margin-top: 10px;
+    margin-top: .8em;
   }
   .comment-form .comment-textarea {
     resize: vertical;
@@ -48,12 +44,10 @@
 </style>
 
 <div class="content">
-  <div class="post-container">
-    <form id="comment" class="comment-form">
-      <fieldset>
-        <textarea class="comment-textarea" placeholder="Enter your comment" id="comment" name="comment"></textarea>
-        <button class="button button-outline float-right" type="submit" on:click={ createComment }>Comment</button>
-      </fieldset>
-    </form>
-  </div>
+  <form id="comment" class="comment-form">
+    <fieldset>
+      <textarea class="comment-textarea" placeholder="Enter your comment" id="comment" name="comment"></textarea>
+      <button class="button button-outline float-right" type="submit" on:click={ createComment }>Comment</button>
+    </fieldset>
+  </form>
 </div>

@@ -34,14 +34,10 @@
 
 <style>
   .content {
-    display: flex;
-  }
-  .content .post-container {
     width: 100%;
-    margin-left: 55px;
   }
   .comment-container {
-    margin-bottom: 15px;
+    margin-bottom: 1em;
   }
   .comment-metadata {
     font-size: 12px;
@@ -55,19 +51,17 @@
 </style>
 
 <div class="content">
-  <div class="post-container">
-    {#each comments as comment}
-      <div class="comment-container">
-        <div class="comment-metadata">
-          <span>{ comment.author.username }</span> · <span>{ moment(comment.created).fromNow() }</span>
-          {#if comment.author.id === user.id }
-            <span id={ comment.id } class="remove-button float-right" on:click={ removeComment }>Delete</span>
-          {/if}
-        </div>
-        <div class="comment-body">
-          <span>{ comment.body }</span>
-        </div>
+  {#each comments as comment}
+    <div class="comment-container">
+      <div class="comment-metadata">
+        <span>{ comment.author.username }</span> · <span>{ moment(comment.created).fromNow() }</span>
+        {#if comment.author.id === user.id }
+          <span id={ comment.id } class="remove-button float-right" on:click={ removeComment }>Delete</span>
+        {/if}
       </div>
-    {/each}
-  </div>
+      <div class="comment-body">
+        <span>{ comment.body }</span>
+      </div>
+    </div>
+  {/each}
 </div>
