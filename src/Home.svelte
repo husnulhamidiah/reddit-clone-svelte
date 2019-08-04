@@ -3,7 +3,8 @@
 	import Post from './Post.svelte'
 	import { userStore } from './store'
 
-	export let username = null; const category = null
+	export let username = null
+	export let category = null
 	let posts = []
 
 	const fetchPost = async ({ username, category }) => {

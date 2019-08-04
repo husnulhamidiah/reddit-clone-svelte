@@ -4,7 +4,8 @@
   import CommentForm from './CommentForm.svelte'
   import { userStore } from './store'
 
-  export let category = null; const postId = null
+  export let category = null
+  export let postId = null
   let post = null
 
   let user
