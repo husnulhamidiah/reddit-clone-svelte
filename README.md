@@ -1,69 +1,61 @@
-*Psst — looking for a shareable component template? Go here --> [sveltejs/component-template](https://github.com/sveltejs/component-template)*
+# Reddit Clone Svelte
 
----
+This project is a front-end only reddit clone that I wrote to learn abaout Svelte. The philosophy of this project is heavily inspired from [Asperitas](https://github.com/d11z/asperitas/tree/master/client).
 
-# svelte app
+## Prerequisites
 
-This is a project template for [Svelte](https://svelte.dev) apps. It lives at https://github.com/sveltejs/template.
+1. Node
+2. Reddit Clone API
 
-To create a new project based on this template using [degit](https://github.com/Rich-Harris/degit):
+    You can have your own API as long as it follows the [Blueprint]() in this repository. Or If you in a hurry, you can pick one from this list:
 
-```bash
-npx degit sveltejs/template svelte-app
-cd svelte-app
-```
+    | Language      | Name          | Source         | Status | Mantainer |
+    | ------------- | ------------- | :------------- | :----- | :--- |
+    | Javascript    | reddit-clone-api-js | [github]() | complete | [husnulhamidiah](github.com/husnulhamidiah) |
+    | Ruby          | reddit-clone-api-rb | | development | |
+    | Golang        | reddit-clone-api-go | | TBA | |
 
-*Note that you will need to have [Node.js](https://nodejs.org) installed.*
+## Installation
 
+1. Clone the respository
+2. Install dependencies
+    ```bash
+    cd reddit-clone-svelte
+    npm install
+    ```
 
-## Get started
+3. Run the app
+    ```bash
+    npm run dev
+    ```
 
-Install the dependencies...
+    Navigate to [localhost:5000](http://localhost:5000). You should see your app running. Edit a component file in `src`, save it, and reload the page to see your changes.
 
-```bash
-cd svelte-app
-npm install
-```
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-...then start [Rollup](https://rollupjs.org):
+Please make sure to update tests as appropriate.
 
-```bash
-npm run dev
-```
+## License
 
-Navigate to [localhost:5000](http://localhost:5000). You should see your app running. Edit a component file in `src`, save it, and reload the page to see your changes.
+MIT License
 
+Copyright (c) [year] [fullname]
 
-## Deploying to the web
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-### With [now](https://zeit.co/now)
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-Install `now` if you haven't already:
-
-```bash
-npm install -g now
-```
-
-Then, from within your project folder:
-
-```bash
-cd public
-now
-```
-
-As an alternative, use the [Now desktop client](https://zeit.co/download) and simply drag the unzipped project folder to the taskbar icon.
-
-### With [surge](https://surge.sh/)
-
-Install `surge` if you haven't already:
-
-```bash
-npm install -g surge
-```
-
-Then, from within your project folder:
-
-```bash
-npm run build
-surge public
-```
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
