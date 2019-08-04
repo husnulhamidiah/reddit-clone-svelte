@@ -15,7 +15,7 @@
     event.preventDefault()
     const { srcElement: { id: commentId } } = event
 
-    const url = `http://local.host:8080/api/post/${id}/${commentId}`
+    const url = `API_BASE_URL/api/post/${id}/${commentId}`
     const token = localStorage.getItem('token')
 
     const res = await fetch(url, {

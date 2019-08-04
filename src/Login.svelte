@@ -19,7 +19,7 @@
     const formData = new FormData(form)
     form.reset()
 
-    const url = 'http://local.host:8080/api/login'
+    const url = 'API_BASE_URL/api/login'
     const res = await fetch(url, {
       method: 'POST',
       headers: {

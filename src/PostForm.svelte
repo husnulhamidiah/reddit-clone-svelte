@@ -21,7 +21,7 @@
 
     const token = localStorage.getItem('token')
 
-    const url = 'http://local.host:8080/api/posts'
+    const url = 'API_BASE_URL/api/posts'
     const res = await fetch(url, {
       method: 'POST',
       headers: {

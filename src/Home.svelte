@@ -8,7 +8,7 @@
 	let posts = []
 
 	const fetchPost = async ({ username, category }) => {
-	  let url = 'http://local.host:8080/api'
+	  let url = 'API_BASE_URL/api'
 
 	  if (username) url += `/user/${username}`
 	  else if (category) url += `/posts/${category}`

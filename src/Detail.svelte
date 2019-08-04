@@ -14,7 +14,7 @@
   })
 
   const fetchPost = async ({ postId }) => {
-    const url = `http://local.host:8080/api/post/${postId}`
+    const url = `API_BASE_URL/api/post/${postId}`
 
     const res = await fetch(url)
     if (!res.ok) return alert('Something wrong!')
