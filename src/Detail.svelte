@@ -14,7 +14,7 @@
   })
 
   const fetchPost = async ({ postId }) => {
-    const url = `API_BASE_URL/api/post/${postId}`
+    const url = `API_BASE_URL/post/${postId}`
 
     const res = await fetch(url)
     if (!res.ok) return alert('Something wrong!')

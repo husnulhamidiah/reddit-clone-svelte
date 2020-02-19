@@ -23,7 +23,7 @@
   }
 
   onMount(async () => {
-    const url = 'API_BASE_URL/api/category'
+    const url = 'API_BASE_URL/category'
     const res = await fetch(url, {
       method: 'GET'
     })

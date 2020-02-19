@@ -10,7 +10,7 @@
     const formData = new FormData(form)
     form.reset()
 
-    const url = `API_BASE_URL/api/post/${id}`
+    const url = `API_BASE_URL/post/${id}`
     const token = localStorage.getItem('token')
 
     const res = await fetch(url, {

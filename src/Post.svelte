@@ -12,7 +12,7 @@
   })
 
   const vote = async (state) => {
-    const url = `API_BASE_URL/api/post/${post.id}/${state}`
+    const url = `API_BASE_URL/post/${post.id}/${state}`
     const token = localStorage.getItem('token')
 
     const res = await fetch(url, {
@@ -33,7 +33,7 @@
   const downvote = () => vote('downvote')
 
   const removePost = async () => {
-    const url = `API_BASE_URL/api/post/${post.id}`
+    const url = `API_BASE_URL/post/${post.id}`
     const token = localStorage.getItem('token')
 
     const res = await fetch(url, {

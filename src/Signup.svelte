@@ -19,7 +19,7 @@
     const formData = new FormData(form)
     form.reset()
 
-    const url = 'API_BASE_URL/api/register'
+    const url = 'API_BASE_URL/register'
     const res = await fetch(url, {
       method: 'POST',
       headers: {

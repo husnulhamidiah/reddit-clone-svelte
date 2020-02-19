@@ -8,7 +8,7 @@
 	let posts = []
 
 	const fetchPost = async ({ username, category }) => {
-	  let url = 'API_BASE_URL/api'
+	  let url = 'API_BASE_URL'
 
 	  if (username) url += `/user/${username}`
 	  else if (category) url += `/posts/${category}`
