@@ -29,7 +29,7 @@
 
     const token = localStorage.getItem('token')
 
-    const url = 'API_BASE_URL/api/posts'
+    const url = 'API_BASE_URL/posts'
     const res = await fetch(url, {
       method: 'POST',
       headers: {

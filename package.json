@@ -33,8 +33,11 @@
   "scripts": {
     "build": "rollup -c",
     "autobuild": "rollup -c -w",
-    "dev": "run-p start:dev autobuild",
+    "dev": "npm run set:dev && run-p start:dev autobuild",
+    "set:dev": "rm -f .env && ln -s .env.dev .env",
+    "set:prod": "rm -f .env && ln -s .env.prod .env",
     "start": "sirv public --single",
+    "deploy": "npm run set:prod && npm run build && ./bin/deploy.sh",
     "start:dev": "sirv public --single --dev"
   },
   "main": "public/index.html",

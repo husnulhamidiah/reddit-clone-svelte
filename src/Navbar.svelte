@@ -69,7 +69,7 @@
 </style>
 
 <div class="navbar">
-  <span><Link to="/"><strong>REDDIT CLONE</strong></Link></span>
+  <span><Link to="/"><strong>upvotocracy</strong></Link></span>
   <div class="float-right">
     {#if user}
       <span class="navbar-item"><Link to="/u/{ user.username }">{ user.username.toUpperCase() }</Link></span>
