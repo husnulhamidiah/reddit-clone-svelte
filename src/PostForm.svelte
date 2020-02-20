@@ -42,7 +42,6 @@
     const formData = new FormData(form);
     form.reset()
 
-    const postUrl = formData.get('url');
     const token = localStorage.getItem('token')
 
     const url = 'API_BASE_URL/posts'
@@ -55,7 +54,7 @@
       body: JSON.stringify({
         type: formData.get('type'),
         category: formData.get('category'),
-        title: title || formData.get('title'),
+        title: formData.get('title'),
         url: formData.get('url'),
         text: formData.get('text')
       })
