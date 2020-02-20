@@ -16,7 +16,7 @@
     const url = formData.get('url');
     const res = await getTitle(url);
 
-    document.getElementById('title').value = res.title;
+    document.getElementById('title').value = res.title.slice(0, 100).trim();
   }
 
   onMount(async () => {
