@@ -35,6 +35,10 @@
 </script>
 
 <style>
+  .logo {
+    height: 3rem;
+  }
+
   .navbar {
     padding-bottom: .4em;
     border-bottom: .1em solid #d1d1d1;
@@ -69,7 +73,7 @@
 </style>
 
 <div class="navbar">
-  <span><Link to="/"><strong>upvotocracy</strong></Link></span>
+  <span><Link to="/"><img class="logo" src="/images/logo.svg" alt="upvotocracy" /></Link></span>
   <div class="float-right">
     {#if user}
       <span class="navbar-item"><Link to="/u/{ user.username }">{ user.username.toUpperCase() }</Link></span>
