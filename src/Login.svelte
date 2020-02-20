@@ -50,7 +50,7 @@
     <form id="login">
       <fieldset>
         <input type="text" placeholder="Username" id="username" name="username">
-        <input type="text" placeholder="Password" id="password" name="password">
+        <input type="password" placeholder="Password" id="password" name="password">
 
         <button class="button-primary float-right" type="submit" on:click={ login }>Login</button>
       </fieldset>

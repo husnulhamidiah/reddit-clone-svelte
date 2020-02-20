@@ -19,6 +19,8 @@
     const res = await fetch(url)
     if (!res.ok) return alert('Something wrong!')
     post = await res.json()
+    document.title = `${post.title} - upvotocracy.com`;
+
   }
 
   $: fetchPost({ postId })

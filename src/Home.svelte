@@ -7,6 +7,10 @@
 	export let category = null
 	let posts = []
 
+	if (category) {
+		document.title = `${category} - upvotocracy.com`;
+	}
+
 	const fetchPost = async ({ username, category }) => {
 	  let url = 'API_BASE_URL'
 
