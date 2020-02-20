@@ -6,6 +6,13 @@
   export let post = {}
   export let withDetails = false
 
+  let postThumb = null;
+
+  if (/\.(jpg|jpeg|png|gif)$/.test(post.url.toLowerCase())) {
+    postThumb = post.url;
+    console.log(postThumb, 'postThumb');
+  }
+
   let user = {}
   userStore.subscribe(value => {
     if (value) user = value
@@ -88,6 +95,11 @@
   .remove-button {
     cursor: pointer;
   }
+
+  .thumb {
+    display: block;
+    width: 100%;
+  }
 </style>
 
 <div class="content">
@@ -102,7 +114,10 @@
       <a href="{ post.url }" target="_blank">{ post.title }</a>
     </div>
 
-    <div class="post-preview">{ post.url || post.text }</div>
+    <div class="post-preview">
+    {#if postThumb}<img class="thumb" src={postThumb} alt={post.title} />{/if}
+    { post.url || post.text }
+    </div>
 
     <div class="post-detail" class:separator={ !withDetails }>
       <Link to="/a/{ post.category.name }/{ post.id }">{ post.comments.length } comments</Link> ·
