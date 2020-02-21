@@ -45,15 +45,21 @@
   }
 </script>
 
-<div class="row">
-  <div class="column column-33">
-    <form id="login">
-      <fieldset>
-        <input type="text" placeholder="Username" id="username" name="username">
-        <input type="password" placeholder="Password" id="password" name="password">
+<style>
+  .login {
+    width: 300px;
+  }
+  @media only screen and (max-width: 800px) {
+    .login {
+      width: 100%;
+    }
+  }
+</style>
 
-        <button class="button-primary float-right" type="submit" on:click={ login }>Login</button>
-      </fieldset>
-    </form>
-  </div>
-</div>
+<form class="login" id="login">
+  <fieldset>
+    <input type="text" placeholder="Username" id="username" name="username">
+    <input type="password" placeholder="Password" id="password" name="password">
+    <button class="button-primary float-right" type="submit" on:click={ login }>Login</button>
+  </fieldset>
+</form>

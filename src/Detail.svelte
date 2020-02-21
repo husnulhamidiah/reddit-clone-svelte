@@ -19,8 +19,7 @@
     const res = await fetch(url)
     if (!res.ok) return alert('Something wrong!')
     post = await res.json()
-    document.title = `${post.title} - upvotocracy.com`;
-
+    document.title = `${post.title} - upvotocracy.com`
   }
 
   $: fetchPost({ postId })
@@ -31,10 +30,6 @@
 </script>
 
 <style>
-  .grid-container {
-    display: grid;
-    grid-template-columns: 4em auto;
-  }
   .post-body {
     grid-column-start: span 2;
   }
@@ -44,19 +39,13 @@
 </style>
 
 {#if post}
-  <div class="row">
-    <div class="column column-75">
-      <div class="grid-container">
-        <div class="post-body">
-          <Post { post } withDetails={ true }></Post>
-        </div>
-        <div class="post-meta">
-          {#if user}
-            <CommentForm id={ post.id } on:update-comment={ updateComment }></CommentForm>
-          {/if}
-          <Comment id={ post.id } comments={ post.comments } on:update-comment={ updateComment }></Comment>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="post-body">
+  <Post { post } withDetails={ true }></Post>
+</div>
+<div class="post-meta">
+  {#if user}
+    <CommentForm id={ post.id } on:update-comment={ updateComment }></CommentForm>
+  {/if}
+  <Comment id={ post.id } comments={ post.comments } on:update-comment={ updateComment }></Comment>
+</div>
 {/if}

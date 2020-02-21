@@ -45,15 +45,22 @@
   }
 </script>
 
-<div class="row">
-  <div class="column column-33">
-    <form id="register">
-      <fieldset>
-        <input type="text" placeholder="Username" id="username" name="username">
-        <input type="password" placeholder="Password" id="password" name="password">
-        <input type="password" placeholder="Confirm Password" id="confirmPassword" name="confirmPassword">
-        <button class="button-primary float-right" type="submit" on:click={ register }>Signup</button>
-      </fieldset>
-    </form>
-  </div>
-</div>
+<style>
+  .signup {
+    width: 300px;
+  }
+  @media only screen and (max-width: 800px) {
+    .signup {
+      width: 100%;
+    }
+  }
+</style>
+
+<form class="signup" id="register">
+  <fieldset>
+    <input type="text" placeholder="Username" id="username" name="username">
+    <input type="password" placeholder="Password" id="password" name="password">
+    <input type="password" placeholder="Confirm Password" id="confirmPassword" name="confirmPassword">
+    <button class="button-primary float-right" type="submit" on:click={ register }>Signup</button>
+  </fieldset>
+</form>
