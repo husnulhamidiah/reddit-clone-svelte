@@ -26,11 +26,12 @@
 		border-color: #13d583;
 	}
 
+	:global(input[type="radio"].toggle:checked+label)
 	:global(input[type="radio"].toggle:checked+label) {
 		color: #13d583;
 	}
 
-	:global(input[type='text']:focus) {
+	:global(input[type='text']:focus, textarea:focus, select:focus) {
 		border-color: #13d583;
 	}
 
@@ -50,6 +51,18 @@
 		margin-top: 20px;
 		word-wrap: anywhere;
 	}
+
+	footer {
+		font-size: 1.2rem;
+		display: flex;
+		justify-content: flex-end;
+		align-items: flex-end;
+	}
+
+	footer > * {
+		margin-left: 1rem;
+	}
+
 	@media only screen and (max-width: 1250px) {
     .container {
       max-width: 100%;
@@ -77,5 +90,12 @@
 				<Route path="/newcategory" component={ CategoryForm } />
 			</div>
 		</div>
+		<footer>
+			<a href="https://upvotocracy.com/api/1/posts/rss">RSS</a>
+			<a href="https://nullvideo.com">nullvideo.com</a>
+			<a href="https://virusoutbreak.wtf">VirusOUTBREAK.wtf</a>
+			<a href="https://profullstack.com">Profullstack.com</a>
+			<span class="legal">&copy; 2020</span>
+		</footer>
 	</div>
 </Router>
