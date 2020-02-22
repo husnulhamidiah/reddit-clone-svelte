@@ -18,6 +18,7 @@
 	}
 	:global(a) {
 		color: #13d583;
+		font-weight: 500;
 	}
 
 	:global(button) {
