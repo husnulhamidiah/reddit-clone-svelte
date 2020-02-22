@@ -21,9 +21,8 @@
     margin: 15px;
     display: block;
     justify-content: space-between;
-    background-color: #f4e1ff;
+    background-color: #eafff6;
     width: 200px;
-    text-align: center;
     padding: 10px;
   }
   .sidebar ul{

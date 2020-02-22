@@ -16,6 +16,27 @@
 	:global(.row) {
 	  justify-content: center;
 	}
+	:global(a) {
+		color: #13d583;
+	}
+
+	:global(button) {
+		background-color: #13d583;
+		border-color: #13d583;
+	}
+
+	:global(input[type="radio"].toggle:checked+label) {
+		color: #13d583;
+	}
+
+	:global(input[type='text']:focus) {
+		border-color: #13d583;
+	}
+
+	:global(input[type="radio"].toggle+label:after) {
+		border-bottom-color: #13d583;
+	}
+
 	.container {
 		max-width: 70%;
 	}
