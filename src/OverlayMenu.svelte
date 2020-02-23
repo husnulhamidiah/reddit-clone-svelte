@@ -30,7 +30,7 @@
     justify-content: center;
     width: 100%;
     height: 100%;
-    background-color: #9b4dca;
+    background-color: #eafff6;
     position: fixed;
     z-index: 1;
     top: 0;
@@ -47,7 +47,6 @@
   }
   .overlay h3 {
     text-decoration: underline;
-    color: white;
   }
   .categories {
     margin-top: 20px;
@@ -55,11 +54,9 @@
   .menu {
     margin-top: 50px;
   }
-  button {
-    background: #bd7ee4;
-  }
   span{
-    color: white;
+		color: #13d583;
+		font-weight: 500;
     font-size: 24px;
   }
   ul {
