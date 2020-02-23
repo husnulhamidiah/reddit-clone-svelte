@@ -61,8 +61,8 @@
       body: JSON.stringify({
         type: formData.get('type'),
         category: formData.get('category'),
-        title: formData.get('title'),
-        url: formData.get('url'),
+        title: formData.get('title').slice(0, 100).trim(),
+        url: formData.get('url').trim(),
         text: formData.get('text')
       })
     })
