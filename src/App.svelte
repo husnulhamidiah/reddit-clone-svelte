@@ -26,8 +26,12 @@
 		border-color: #13d583;
 	}
 
-	:global(input[type="radio"].toggle:checked+label)
-	:global(input[type="radio"].toggle:checked+label) {
+	:global(.button.button-outline, button.button-outline){
+		border-color: #13d583;
+		color: #13d583;
+	}
+
+	:global(input[type="radio"].toggle:checked+label){
 		color: #13d583;
 	}
 
