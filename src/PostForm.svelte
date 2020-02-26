@@ -51,8 +51,10 @@
 
     const token = localStorage.getItem('token')
 
-    const url = 'API_BASE_URL/posts'
-    const res = await fetch(url, {
+    const api = 'API_BASE_URL/posts'
+    const url = formData.get('url');
+
+    const res = await fetch(api, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -62,7 +64,7 @@
         type: formData.get('type'),
         category: formData.get('category'),
         title: formData.get('title').slice(0, 100).trim(),
-        url: formData.get('url').trim(),
+        url: url && url.trim(),
         text: formData.get('text')
       })
     })

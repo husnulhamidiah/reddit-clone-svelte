@@ -36,8 +36,28 @@
       user = value
     }
   })
+
+  function sortBy(type = 'hot') {
+    posts = posts.sort((a, b) => {
+      if (type === 'hot') {
+        return b.score - a.score;
+      }
+
+      if (type === 'comments') {
+        return b.comments.length - a.comments.length;
+      }
+      
+      return new Date(b.created).getTime() - new Date(a.created).getTime();
+    });
+  }
 </script>
 
+<nav>
+  <a href="#hot" on:click|preventDefault={() => sortBy('hot')}>Hot</a>
+  <a href="#new" on:click|preventDefault={() => sortBy('new')}>New</a>
+  <a href="#comments" on:click|preventDefault={() => sortBy('comments')}>Comments</a>
+  <a href={`/api/1/posts/${category?category+'/' : ''}rss`}>RSS</a>
+</nav>
 {#each posts as post}
   <Post { post }></Post>
 {/each}

@@ -2,10 +2,10 @@
   import { Link, navigate } from 'svelte-routing'
   import moment from 'moment'
   import { userStore } from './store'
+  const converter = new showdown.Converter({simplifiedAutoLink: true});
 
   export let post = {}
   export let withDetails = false
-
   let postThumb = null;
 
   if (post.url && /\.(jpg|jpeg|png|gif)/.test(post.url.toLowerCase())) {
@@ -81,7 +81,7 @@
     cursor: pointer;
   }
 	.content .post-container .post-preview {
-		font-size: 14px;
+    font-size: 14px; 
 	}
 	.content .post-container .post-detail {
 		font-size: 14px;
@@ -98,7 +98,7 @@
 
   .thumb {
     display: block;
-    width: 100%;
+    width: 50%;
   }
 </style>
 
@@ -116,7 +116,7 @@
 
     <div class="post-preview">
     {#if postThumb}<img class="thumb" src={postThumb} alt={post.title} />{/if}
-    { post.url || post.text }
+    {@html post.url || converter.makeHtml(post.text) } 
     </div>
 
     <div class="post-detail" class:separator={ !withDetails }>

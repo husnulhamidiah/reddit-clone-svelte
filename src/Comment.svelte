@@ -2,6 +2,7 @@
   import { createEventDispatcher } from 'svelte'
   import moment from 'moment'
   import { userStore } from './store'
+  const converter = new showdown.Converter({simplifiedAutoLink: true});
 
   export let id, comments
   const dispatch = createEventDispatcher()
@@ -60,7 +61,7 @@
         {/if}
       </div>
       <div class="comment-body">
-        <span>{ comment.body }</span>
+        <span>{@html converter.makeHtml(comment.body) }</span>
       </div>
     </div>
   {/each}

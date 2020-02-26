@@ -97,7 +97,7 @@
 		<footer>
 			<a href="https://upvotocracy.com/api/1/posts/rss">RSS</a>
 			<a href="https://nullvideo.com">nullvideo.com</a>
-			<a href="https://virusoutbreak.wtf">VirusOUTBREAK.wtf</a>
+			<a href="https://virusoutbreak.wtf">VirusOUTBREAK</a>
 			<a href="https://profullstack.com">Profullstack.com</a>
 			<span class="legal">&copy; 2020</span>
 		</footer>
