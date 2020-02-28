@@ -52,7 +52,7 @@
   }
 </script>
 
-<nav>
+<nav class="topnav">
   <a href="#hot" on:click|preventDefault={() => sortBy('hot')}>Hot</a>
   <a href="#new" on:click|preventDefault={() => sortBy('new')}>New</a>
   <a href="#comments" on:click|preventDefault={() => sortBy('comments')}>Comments</a>

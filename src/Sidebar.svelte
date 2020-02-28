@@ -21,7 +21,7 @@
     margin: 15px;
     display: block;
     justify-content: space-between;
-    background-color: #eafff6;
+    background-color: #f9f9f9;
     width: 200px;
     padding: 10px;
   }

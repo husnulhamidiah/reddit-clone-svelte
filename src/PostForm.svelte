@@ -5,6 +5,7 @@
 
   let scoops = 'link'
   let categories = []
+  let sortedCategories = [];
   let user
   userStore.subscribe(value => {
     user = value
@@ -35,6 +36,18 @@
     })
 
     categories = await res.json()
+    sortedCategories = categories.sort((a, b) => {
+        const nameA = a.name.toUpperCase();
+        const nameB = b.name.toUpperCase();
+        if (nameA < nameB) {
+          return -1;
+        }
+        if (nameA > nameB) {
+          return 1;
+        }
+
+        return 0;
+    });
   })
 
   async function getTitle(url) {
@@ -155,7 +168,7 @@
     </div>
     <label for="category">Category</label>
     <select id="category" name="category">
-      {#each categories as category}
+      {#each sortedCategories as category}
         {#if category.name == currentCat}
           <option value="{ category._id }" selected>{ category.name }</option>
         {:else}
