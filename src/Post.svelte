@@ -117,7 +117,11 @@
 
   <div class="post-container">
     <div class="post-title">
-      <a href="{ post.url }" target="_blank">{ post.title }</a>
+      {#if withDetails}
+        <a href="{ post.url }" target="_blank">{ post.title }</a>
+      {:else}
+       <a href={`/a/${post.category.name}/${post.id}`}>{ post.title }</a>
+      {/if}
     </div>
 
     <div class="post-preview">
