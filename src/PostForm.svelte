@@ -87,7 +87,7 @@
       return res.json()
     });
 
-    return navigate(`/a/${category}/${res.id}`);
+    return navigate(`/a/${res.category.name}/${res.id}`);
   }
 
   const urlParams = new URLSearchParams(window.location.search)
