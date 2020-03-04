@@ -18,30 +18,30 @@
 	  justify-content: center;
 	}
 	:global(a) {
-		color: #13d583;
+		color: #147b50;
 		font-weight: 500;
 	}
 
 	:global(button) {
-		background-color: #13d583;
-		border-color: #13d583;
+		background-color: #147b50;
+		border-color: #147b50;
 	}
 
 	:global(.button.button-outline, button.button-outline){
-		border-color: #13d583;
-		color: #13d583;
+		border-color: #147b50;
+		color: #147b50;
 	}
 
 	:global(input[type="radio"].toggle:checked+label){
-		color: #13d583;
+		color: #147b50;
 	}
 
 	:global(input[type='text']:focus, textarea:focus, select:focus) {
-		border-color: #13d583;
+		border-color: #147b50;
 	}
 
 	:global(input[type="radio"].toggle+label:after) {
-		border-bottom-color: #13d583;
+		border-bottom-color: #147b50;
 	}
 
 	.container {
