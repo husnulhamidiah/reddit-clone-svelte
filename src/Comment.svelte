@@ -46,6 +46,11 @@
   .comment-body {
     font-size: 14px;
   }
+
+  .comment-container a {
+    color: #95afa4;
+  }
+
   .remove-button {
     cursor: pointer;
   }
@@ -55,7 +60,7 @@
   {#each comments as comment}
     <div class="comment-container">
       <div class="comment-metadata">
-        <span>{ comment.author.username }</span> · <span>{ moment(comment.created).fromNow() }</span>
+        <a href={`/u/${comment.author.username}`}>{ comment.author.username }</a> · <span>{ moment(comment.created).fromNow() }</span>
         {#if comment.author.id === user.id }
           <span id={ comment.id } class="remove-button float-right" on:click={ removeComment }>Delete</span>
         {/if}
