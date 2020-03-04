@@ -38,7 +38,7 @@
     }
   })
 
-  function sortBy(type = 'hot') {
+async function sortBy(type = 'hot') {
     if (type === 'hot') {
       sort = '-score'
     } else if (type === 'new') {
@@ -49,11 +49,11 @@
       sort = '+score';
     }
 
-    fetchPost({ username, category })
+    await fetchPost({ username, category })
     
     posts = posts.sort((a, b) => {
       if (type === 'comments') {
-        return b.comments.length - a.comments.length;
+        return b.commentCount - a.commentCount;
       }
     });
   }
