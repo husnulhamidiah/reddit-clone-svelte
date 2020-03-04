@@ -78,7 +78,7 @@
         {/if}
       </div>
       <div class="comment-body">
-        <span>{@html converter.makeHtml(comment.body) }</span>
+        <span>{@html converter.makeHtml(comment.body).replace(/@(\w+)/g, `<a href="/u/$1">@$1</a>`) }</span>
       </div>
     </div>
   {/each}

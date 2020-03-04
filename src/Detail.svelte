@@ -13,6 +13,14 @@
     user = value
   })
 
+
+  function setMetaTags(post){
+    document.querySelector('meta[name="description"]').setAttribute("content", post.text || post.title);
+    document.querySelector('meta[property="og:description"]').setAttribute("content", post.text || post.title);
+    document.querySelector('meta[property="og:title"]').setAttribute('content', post.title);
+    document.querySelector('meta[name="twitter:title"]').setAttribute('content', post.title);
+  }
+
   const fetchPost = async ({ postId }) => {
     const url = `API_BASE_URL/post/${postId}`
 
@@ -20,6 +28,7 @@
     if (!res.ok) return alert('Something wrong!')
     post = await res.json()
     document.title = `${post.title} - upvotocracy.com`
+    setMetaTags(post);
   }
 
   $: fetchPost({ postId })
