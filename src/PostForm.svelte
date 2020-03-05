@@ -64,6 +64,7 @@
 
   const createPost = async (event) => {
     event.preventDefault()
+    await onUrlBlur();
     const form = document.getElementById('create-post')
     const formData = new FormData(form);
     form.reset()
