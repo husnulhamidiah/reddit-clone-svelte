@@ -74,9 +74,9 @@
     const api = 'API_BASE_URL/posts'
     const url = formData.get('url');
     const category = formData.get('category');
-    const thumbEl = document.getElementById('thumb')
-    const thumb = thumbEl && thumbEl.src.indexOf('http') > -1 && thumbEl.src;
-
+    const thumbEl = document.getElementById('thumb');
+    const thumb = thumbEl && thumbEl.src.indexOf('placeholder.png') === -1 ? thumbEl.src : null;
+    console.log(thumb, 'thumb');
     const res = await fetch(api, {
       method: 'POST',
       headers: {
