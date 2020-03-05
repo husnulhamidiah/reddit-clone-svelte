@@ -19,6 +19,11 @@
     document.querySelector('meta[property="og:description"]').setAttribute("content", post.text || post.title);
     document.querySelector('meta[property="og:title"]').setAttribute('content', post.title);
     document.querySelector('meta[name="twitter:title"]').setAttribute('content', post.title);
+    
+    if (post.thumb) {
+      document.querySelector('meta[property="og:image"]').setAttribute('content', post.thumb);
+      document.querySelector('meta[property="twitter:image"]').setAttribute('content', post.thumb);
+    }
   }
 
   const fetchPost = async ({ postId }) => {

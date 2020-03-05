@@ -21,6 +21,9 @@
     const form = document.getElementById('create-post');
     const formData = new FormData(form);
     const url = formData.get('url');
+
+    if (!url) return;
+
     const res = await getTitle(url);
 
     if (res.thumb) {
