@@ -4,7 +4,7 @@
   import { userStore } from './store'
   import { slide } from 'svelte/transition'
   import moment from 'moment'
-
+  import { parseContent } from './utils/parseContent'
   document.title = 'Inbox - upvotocracy.com'
 
   let inbox = []
@@ -90,7 +90,7 @@
     </div>
 
     <div class="post-preview">
-      {message.body}
+      {@html parseContent(message.body)}
     </div>
 
     <div class="post-detail">

@@ -42,6 +42,7 @@
   .post-body {
     grid-column-start: span 2;
   }
+
   .post-meta {
     grid-column: 2;
   }

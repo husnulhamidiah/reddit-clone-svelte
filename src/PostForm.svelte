@@ -12,18 +12,24 @@
   })
 
   let currentCat
+  let thumb;
   currentCategory.subscribe(value => {
     currentCat = value
   })
 
   async function onUrlBlur(e) {
-    if (!title) {
-      const form = document.getElementById('create-post');
-      const formData = new FormData(form);
-      const url = formData.get('url');
-      const res = await getTitle(url);
+    const form = document.getElementById('create-post');
+    const formData = new FormData(form);
+    const url = formData.get('url');
+    const res = await getTitle(url);
 
-      document.getElementById('title').value = res.title.slice(0, 100).trim();
+    if (res.thumb) {
+      thumb = res.thumb;
+      document.getElementById('thumb').src = thumb;
+    }
+
+    if (!title) {
+        document.getElementById('title').value = res.title.slice(0, 100).trim();      
     }
   }
 
@@ -67,6 +73,8 @@
     const api = 'API_BASE_URL/posts'
     const url = formData.get('url');
     const category = formData.get('category');
+    const thumbEl = document.getElementById('thumb')
+    const thumb = thumbEl && thumbEl.src.indexOf('http') > -1 && thumbEl.src;
 
     const res = await fetch(api, {
       method: 'POST',
@@ -79,7 +87,8 @@
         category,
         title: formData.get('title').slice(0, 100).trim(),
         url: url && url.trim(),
-        text: formData.get('text')
+        text: formData.get('text'),
+        thumb,
       })
     }).then(res => {
       if (!res.ok) alert('Something went wrong!')
@@ -160,6 +169,18 @@
   input[type="radio"].toggle:checked + label:after {
     left: 0;
   }
+
+  #thumb {
+    width: 20rem;
+    margin: 0 .5rem .5rem;
+  }
+
+  .thumbnail {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: row;
+  }
 </style>
 
 <form id="create-post">
@@ -185,10 +206,17 @@
     {#if scoops === 'link'}
       <label for="url">Link</label>
       <input type="text" placeholder="https:// ..." id="url" name="url" on:blur={onUrlBlur} value="{link}">
-    {:else}
+      <label for="thumb">Thumbnail</label>
+      <div class="thumbnail">
+        <img id="thumb" src="/images/placeholder.png" alt="Thumbnail" />
+        <button type="button" on:click={onUrlBlur}>Fetch</button>
+      </div>
+      {:else}
       <label for="text">Text</label>
       <textarea placeholder="Put your text here ..." id="text" name="text" value="{text}"></textarea>
     {/if}
-    <button class="button-primary float-right" type="submit" on:click={ createPost }>Create Post</button>
+    <footer>
+      <button class="button-primary float-right" type="submit" on:click={ createPost }>Create Post</button>
+    </footer>
   </fieldset>
 </form>

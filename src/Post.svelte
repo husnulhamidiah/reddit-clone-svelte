@@ -13,7 +13,7 @@
       postThumb = post.url;
     }
     else {
-      postThumb = null;
+      postThumb = post.thumb;
     }
   }
 
@@ -87,6 +87,10 @@
     cursor: pointer;
   }
 	.content .post-container .post-preview {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: flex-start;
     font-size: 14px; 
 	}
 	.content .post-container .post-detail {
@@ -104,7 +108,13 @@
 
   .thumb {
     display: block;
-    width: 50%;
+    max-width: 50%;
+    max-height: 50rem;
+  }
+
+  .withDetails .thumb {
+    max-width: 100%;
+    max-height: 100rem;
   }
 </style>
 
@@ -117,7 +127,7 @@
   {/if}
 </div>
 
-  <div class="post-container">
+  <div class="post-container" class:withDetails>
     <div class="post-title">
       {#if withDetails}
         <a href="{ post.url }" target="_blank">{ post.title }</a>
@@ -126,8 +136,18 @@
       {/if}
     </div>
 
-    <div class="post-preview">
-    {#if postThumb}<img class="thumb" src={postThumb} alt={post.title} />{/if}
+    <div class="post-preview"> 
+    {#if postThumb}
+      {#if withDetails}
+        <a href="{ post.url }" target="_blank">
+          <img class="thumb" src={postThumb} alt={post.title} />
+        </a>  
+      {:else}
+        <a href={`/a/${post.category.name}/${post.id}`}>
+          <img class="thumb" src={postThumb} alt={post.title} />
+        </a>
+      {/if}
+    {/if}
     {@html post.url || converter.makeHtml(post.text) } 
     </div>
 

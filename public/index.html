@@ -33,6 +33,11 @@
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-2359053-86"></script>	
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js" integrity="sha256-jl1+DOsSs9uABTKppOJ2GF8kXoc3XQzBtFFyS0i9Xoo=" crossorigin="anonymous"></script>
 	<script>
+		// iframe buster
+		if (window.location !== window.top.location) {
+        	window.top.location = window.location;
+    	}
+		
 		window.dataLayer = window.dataLayer || [];
 		function gtag(){dataLayer.push(arguments);}
 		gtag('js', new Date());

@@ -2,8 +2,8 @@
   import { createEventDispatcher, onMount } from 'svelte'
   import moment from 'moment'
   import { userStore } from './store'
-  const converter = new showdown.Converter({simplifiedAutoLink: true});
-
+  import { parseContent } from './utils/parseContent'
+  
   export let id, comments
   const dispatch = createEventDispatcher()
 
@@ -45,6 +45,8 @@
   onMount(() => {
     highlightComment()
   })
+
+
 </script>
 
 <style>
@@ -78,7 +80,7 @@
         {/if}
       </div>
       <div class="comment-body">
-        <span>{@html converter.makeHtml(comment.body).replace(/@(\w+)/g, `<a href="/u/$1">@$1</a>`) }</span>
+        <span>{@html parseContent(comment.body) }</span>
       </div>
     </div>
   {/each}
