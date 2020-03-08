@@ -150,7 +150,7 @@
     background: none;
   }
   input[type="radio"].toggle + label:after {
-    border-bottom: 0.1rem solid #13d583;
+    border-bottom: 0.1rem solid #147b50;
     content: "";
     height: 100%;
     position: absolute;
@@ -173,7 +173,7 @@
   }
   input[type="radio"].toggle:checked + label {
     cursor: default;
-    color: #13d583;
+    color: #147b50;
     transition: color 200ms;
   }
   input[type="radio"].toggle:checked + label:after {

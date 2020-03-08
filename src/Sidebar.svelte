@@ -4,6 +4,16 @@
   import { categories } from './store'
 
   let cats = []
+  let filtered = [];
+  let search = '';
+
+  function filterCategories() {
+    filtered = cats.filter(c => {
+      if (c.name.toLowerCase().indexOf(search.toLowerCase()) > -1){
+        return c;
+      }
+    })
+  }
 
   onMount(async () => {
     const url = 'API_BASE_URL/category'
@@ -13,6 +23,7 @@
 
     cats = await res.json()
     categories.set(cats)
+    filtered = cats;
   })
 </script>
 
@@ -34,6 +45,10 @@
     list-style: none;
     margin-bottom: 0px;
   }
+
+  .sidebar input {
+    background-color: #fff;
+  }
   
   @media only screen and (max-width: 850px) {
     .sidebar {
@@ -44,8 +59,9 @@
 
 <div class="sidebar">
   <h3> Categories </h3>
+  <input type="text" bind:value={search} on:keyup={filterCategories} />
   <ul>
-    {#each cats as category}
+    {#each filtered as category}
       <li>
         <Link to="/a/{ category.name }"><span>{ category.name }</span></Link>
       </li>
