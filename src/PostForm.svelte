@@ -21,6 +21,7 @@
     const form = document.getElementById('create-post');
     const formData = new FormData(form);
     const url = formData.get('url');
+    const title = formData.get('title');
 
     if (!url) return;
 
@@ -98,9 +99,14 @@
       if (!res.ok) alert('Something went wrong!')
   
       return res.json()
-    });
+    })
+    .catch(console.error);
 
-    return navigate(`/a/${res.category.name}/${res.id}`);
+    if (res.category) {
+      return navigate(`/a/${res.category.name}/${res.id}`);
+    }
+
+    return navigate('/');
   }
 
   const urlParams = new URLSearchParams(window.location.search)
