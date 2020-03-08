@@ -54,6 +54,9 @@
 </style>
 
 {#if post}
+  {#if category}
+  <h4><a href={`/a/${category}`}>a/{category}</a></h4>
+  {/if}
 <div class="post-body">
   <Post { post } withDetails={ true }></Post>
 </div>

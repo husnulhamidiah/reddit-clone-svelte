@@ -86,6 +86,16 @@
     transform: rotate(90deg);
     cursor: pointer;
   }
+
+  .content .post-container .post-title h1 {
+    font-size: 1.6rem;
+    margin: 0;
+    font-family: inherit;
+    font-weight: 500;
+    letter-spacing: inherit;
+    line-height: normal;
+  }
+
 	.content .post-container .post-preview {
     display: flex;
     justify-content: flex-start;
@@ -130,7 +140,7 @@
   <div class="post-container" class:withDetails>
     <div class="post-title">
       {#if withDetails}
-        <a href="{ post.url }" target="_blank">{ post.title }</a>
+        <h1><a href="{ post.url }" target="_blank">{ post.title }</a></h1>
       {:else}
        <a href={`/a/${post.category.name}/${post.id}`}>{ post.title }</a>
       {/if}

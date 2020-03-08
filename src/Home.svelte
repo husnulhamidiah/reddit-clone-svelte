@@ -59,6 +59,9 @@ async function sortBy(type = 'hot') {
   }
 </script>
 
+{#if category}
+<h4><a href={`/a/${category}`}>a/{category}</a></h4>
+{/if}
 <nav class="topnav">
   <a href="#hot" on:click|preventDefault={() => sortBy('hot')}>Hot</a>
   <a href="#new" on:click|preventDefault={() => sortBy('new')}>New</a>
