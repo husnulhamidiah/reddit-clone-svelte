@@ -7,6 +7,9 @@
   export let post = {}
   export let withDetails = false
   let postThumb = null;
+  let postVideo = null;
+  let youtubeId = null;
+  let nullvideo = null;
 
   const getThumb = (post) => {
     if (post.url && /\.(jpg|jpeg|png|gif)/.test(post.url.toLowerCase())) {
@@ -15,9 +18,31 @@
     else {
       postThumb = post.thumb;
     }
+
+
   }
 
-  $: getThumb(post);
+  const getVideo = (post) => {
+    if (post.url) {
+      if (post.url.indexOf('youtu') > -1) {
+        youtubeId = post.url.match(/v=([^&]*)/);
+        postVideo = post.url;
+      } else if (post.url.indexOf('nullvideo') > -1) {
+        postVideo = post.url.replace('/user/', '/uploads/').replace(/(\?.*)/, '.mp4$1');
+        nullvideo = postVideo;
+        console.log(post.url, nullvideo);
+      } else if (/\.(mp4|mov)/.test(post.url.toLowerCase())) {
+        postVideo = post.url;
+      } else {
+        postVideo = null;
+      }
+    }
+  }
+
+  $: {
+    getThumb(post);
+    getVideo(post);
+  }
 
   let user = {}
   userStore.subscribe(value => {
@@ -122,6 +147,26 @@
     max-height: 50rem;
   }
 
+  .youtube {
+      display: block;
+      position:relative;
+      padding-bottom:56.25%;
+      width: 100%;
+  }
+
+  .youtube iframe {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+  }
+
+  .mp4 {
+      width: 100%;
+      height: auto;
+  }
+
   .withDetails .thumb {
     max-width: 100%;
     max-height: 100rem;
@@ -149,16 +194,39 @@
     <div class="post-preview"> 
     {#if postThumb}
       {#if withDetails}
+        {#if !postVideo}
         <a href="{ post.url }" target="_blank">
           <img class="thumb" src={postThumb} alt={post.title} />
         </a>  
+        {/if}
       {:else}
         <a href={`/a/${post.category.name}/${post.id}`}>
           <img class="thumb" src={postThumb} alt={post.title} />
         </a>
       {/if}
     {/if}
-    {@html post.url || converter.makeHtml(post.text) } 
+    {#if postVideo}
+      {#if withDetails}
+        {#if youtubeId && youtubeId[1]}
+        <div class="plyr__video-embed youtube">
+            <iframe style="border: none;"
+                src={`https://www.youtube.com/embed/${youtubeId[1]}?origin=https://plyr.io&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1`}
+                allowfullscreen
+                allowtransparency
+            ></iframe>
+        </div>
+        {:else if nullvideo}
+        <video class="mp4" poster={nullvideo.replace('.mp4', '.png')} id={`vid-${new Date().getTime()}`} playsinline controls>
+            <source src={nullvideo} type="video/mp4" />
+        </video>
+        {:else}
+        <video class="mp4" poster={postVideo} id={`vid-${new Date().getTime()}`} playsinline controls>
+            <source src={postVideo} type="video/mp4" />
+        </video>
+        {/if}
+      {/if}
+      {@html post.url || converter.makeHtml(post.text) } 
+    {/if}
     </div>
 
     <div class="post-detail" class:separator={ !withDetails }>
