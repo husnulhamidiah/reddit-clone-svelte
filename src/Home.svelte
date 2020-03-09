@@ -41,6 +41,8 @@
 async function sortBy(type = 'hot') {
     if (type === 'hot') {
       sort = '-rank'
+    } else if (type === 'top') {
+      sort = '-score'
     } else if (type === 'new') {
       sort = '-created'
     } else if (type === 'comments') {
@@ -68,6 +70,7 @@ async function sortBy(type = 'hot') {
 <nav class="topnav">
   <a href="#hot" on:click|preventDefault={() => sortBy('hot')}>Hot</a>
   <a href="#new" on:click|preventDefault={() => sortBy('new')}>New</a>
+  <a href="#top" on:click|preventDefault={() => sortBy('top')}>Top</a>
   <a href="#comments" on:click|preventDefault={() => sortBy('comments')}>Comments</a>
   <a href="#hot" on:click|preventDefault={() => sortBy('not')}>Controversial</a>
   <a href={`/api/1/${(username ? 'user' : 'posts' )}/${category || username ? (category || username)+'/' : ''}rss?sort=${sort}`}>RSS</a>
