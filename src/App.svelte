@@ -11,6 +11,7 @@
 	import CategoryForm from './CategoryForm.svelte'
 	import Sidebar from './Sidebar.svelte'
 	import Inbox from './Inbox.svelte'
+	import Leaderboard from './Leaderboard.svelte';
 </script>
 
 <style>
@@ -94,9 +95,11 @@
 				<Route path="/compose" component={ PostForm } />
 				<Route path="/newcategory" component={ CategoryForm } />
 				<Route path="/inbox" component={ Inbox } />
+				<Route path="/leaderboard" component={ Leaderboard } />
 			</div>
 		</div>
 		<footer>
+			<a href="/leaderboard">Leaderboard</a>
 			<a href="https://upvotocracy.com/api/1/posts/rss">RSS</a>
 			<a href="https://nullvideo.com">nullvideo.com</a>
 			<a href="https://virusoutbreak.wtf">VirusOUTBREAK</a>

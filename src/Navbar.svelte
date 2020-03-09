@@ -4,6 +4,7 @@
   import { userStore, showOverlay } from './store'
   import OverlayMenu from './OverlayMenu.svelte'
   import {ROUTER} from 'svelte-routing/src/contexts';
+  import { abbreviateNumber } from './utils/abbreviateNumber';
 
   const { activeRoute } = getContext(ROUTER);
 
@@ -57,21 +58,6 @@
     }
   }
 
-  function abbreviateNumber(value) {
-    let newValue = value;
-    const suffixes = ["", "K", "M", "B","T"];
-    let suffixNum = 0;
-   
-   while (newValue >= 1000) {
-      newValue /= 1000;
-      suffixNum++;
-    }
-
-    newValue = newValue.toPrecision(3);
-
-    newValue += suffixes[suffixNum];
-    return newValue;
-  }
 
   $: getInboxCount($activeRoute)
 </script>

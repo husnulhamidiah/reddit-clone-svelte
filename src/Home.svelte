@@ -14,7 +14,7 @@
     }
     else {
       document.title = 'upvotocracy.com'
-    } 
+    }
   }
 
   const fetchPost = async ({ username, category }) => {
@@ -61,6 +61,9 @@ async function sortBy(type = 'hot') {
 
 {#if category}
 <h4><a href={`/a/${category}`}>a/{category}</a></h4>
+{:else if username}
+<h4><a href={`/u/${username}`}>u/{username}</a></h4>
+
 {/if}
 <nav class="topnav">
   <a href="#hot" on:click|preventDefault={() => sortBy('hot')}>Hot</a>

@@ -225,6 +225,7 @@
         </video>
         {/if}
       {/if}
+    {:else}
       {@html post.url || converter.makeHtml(post.text) } 
     {/if}
     </div>
