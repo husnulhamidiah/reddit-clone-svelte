@@ -29,6 +29,8 @@ onMount(async () => {
     const res = await getLeaderBoard()
         .catch(console.error);
 
-    leaders = res.leaders;
+    if (res) {
+        leaders = res.leaders;
+    }
 })
 </script>

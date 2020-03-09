@@ -18,22 +18,23 @@
     else {
       postThumb = post.thumb;
     }
-
-
   }
 
   const getVideo = (post) => {
     if (post.url) {
-      if (post.url.indexOf('youtu') > -1) {
+      if (post.url.indexOf('youtube.com') > -1) {
         youtubeId = post.url.match(/v=([^&]*)/);
+        postVideo = post.url;
+      } else if (post.url.indexOf('youtu.be') > -1) {
+        youtubeId = post.url.match(/youtu.be\/([^&\?]*)/);
         postVideo = post.url;
       } else if (post.url.indexOf('nullvideo') > -1) {
         postVideo = post.url.replace('/user/', '/uploads/').replace(/(\?.*)/, '.mp4$1');
         nullvideo = postVideo;
-        console.log(post.url, nullvideo);
       } else if (/\.(mp4|mov)/.test(post.url.toLowerCase())) {
         postVideo = post.url;
       } else {
+        youtubeId = null;
         postVideo = null;
       }
     }
