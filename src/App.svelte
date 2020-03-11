@@ -56,6 +56,7 @@
 	.content {
 		margin-top: 20px;
 		word-wrap: anywhere;
+		width: 100%;
 	}
 
 	footer {

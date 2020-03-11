@@ -153,14 +153,16 @@
       position:relative;
       padding-bottom:56.25%;
       width: 100%;
+      overflow: hidden;
   }
 
   .youtube iframe {
       position: absolute;
-      left: 0;
       top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
+      border: 0;
   }
 
   .mp4 {
@@ -221,7 +223,7 @@
             <source src={nullvideo} type="video/mp4" />
         </video>
         {:else}
-        <video class="mp4" poster={postVideo} id={`vid-${new Date().getTime()}`} playsinline controls>
+        <video class="mp4" poster={postVideo.replace('.mp4', '.png')} id={`vid-${new Date().getTime()}`} playsinline controls>
             <source src={postVideo} type="video/mp4" />
         </video>
         {/if}
