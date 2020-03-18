@@ -1,6 +1,7 @@
 <script>
 	import '../node_modules/milligram/dist/milligram.min.css'
 	import { Router, Route } from 'svelte-routing'
+	import { onMount } from 'svelte';
 
 	import Navbar from './Navbar.svelte'
 	import Home from './Home.svelte'
@@ -12,6 +13,13 @@
 	import Sidebar from './Sidebar.svelte'
 	import Inbox from './Inbox.svelte'
 	import Leaderboard from './Leaderboard.svelte';
+
+
+	onMount(async () => {
+		document.getElementById('bookmarklet').setAttribute('href', "javascript:void(open(`https://upvotocracy.com/compose?link=${encodeURIComponent(`${location.href}${location.href.includes('?')?'&':'?'}_snoorandom=${crypto.getRandomValues(new Uint8Array(4)).reduce((a,v)=>a+=(v.toString(16).padStart(2,'0')),'')}`)}&title=${encodeURIComponent(document.querySelector('meta[name=title][content]')?document.querySelector('meta[name=title][content]').content:document.title)}`))");
+	});
+
+
 </script>
 
 <style>
@@ -64,6 +72,7 @@
 		display: flex;
 		justify-content: flex-end;
 		align-items: flex-end;
+		flex-wrap: wrap;
 	}
 
 	footer > * {
@@ -101,9 +110,11 @@
 		</div>
 		<footer>
 			<a href="/leaderboard">Leaderboard</a>
+			<a id="bookmarklet" href="#" title="Drag to bookmark bar">Bookmarklet</a>
 			<a href="https://upvotocracy.com/api/1/posts/rss">RSS</a>
 			<a href="https://nullvideo.com">nullvideo.com</a>
 			<a href="https://virusoutbreak.wtf">VirusOUTBREAK</a>
+			<a href="https://theultimateprepper.com">The Ultimate Prepper</a>
 			<a href="https://profullstack.com">Profullstack.com</a>
 			<span class="legal">&copy; 2020</span>
 		</footer>

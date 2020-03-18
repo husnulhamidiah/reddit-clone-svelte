@@ -31,7 +31,7 @@
       } else if (post.url.indexOf('nullvideo') > -1) {
         postVideo = post.url.replace('/user/', '/uploads/').replace(/(\?.*)/, '.mp4$1');
         nullvideo = postVideo;
-      } else if (/\.(mp4|mov)/.test(post.url.toLowerCase())) {
+      } else if (/\.(mp4|mov|m3u8)/.test(post.url.toLowerCase())) {
         postVideo = post.url;
       } else {
         youtubeId = null;
@@ -127,7 +127,7 @@
     justify-content: flex-start;
     flex-direction: column;
     align-items: flex-start;
-    font-size: 14px; 
+    font-size: 14px;
 	}
 	.content .post-container .post-detail {
 		font-size: 14px;
@@ -219,11 +219,11 @@
             ></iframe>
         </div>
         {:else if nullvideo}
-        <video class="mp4" poster={nullvideo.replace('.mp4', '.png')} id={`vid-${new Date().getTime()}`} playsinline controls>
+        <video class="mp4" poster={nullvideo.replace('.mp4', '.png')} id={`vid-${new Date().getTime()}`} playsinline controls crossorigin>
             <source src={nullvideo} type="video/mp4" />
         </video>
         {:else}
-        <video class="mp4" poster={postVideo.replace('.mp4', '.png')} id={`vid-${new Date().getTime()}`} playsinline controls>
+        <video class="mp4" poster={postVideo.replace('.mp4', '.png')} id={`vid-${new Date().getTime()}`} playsinline controls crossorigin>
             <source src={postVideo} type="video/mp4" />
         </video>
         {/if}
