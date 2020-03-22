@@ -112,6 +112,8 @@
 			<a href="/leaderboard">Leaderboard</a>
 			<a id="bookmarklet" href="#" title="Drag to bookmark bar">Bookmarklet</a>
 			<a href="https://upvotocracy.com/api/1/posts/rss">RSS</a>
+			<a href="mailto:hello@upvotocracy.com?subject=Upvotocracy">hello@upvotocracy.com</a>
+			<a href="https://github.com/profullstack/reddit-clone-svelte">github</a>
 			<a href="https://nullvideo.com">nullvideo.com</a>
 			<a href="https://virusoutbreak.wtf">VirusOUTBREAK</a>
 			<a href="https://theultimateprepper.com">The Ultimate Prepper</a>
