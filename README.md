@@ -11,7 +11,7 @@ This project is a front-end only reddit clone that I wrote to learn abaout Svelt
 
     | Language      | Name          | Source         | Status | Mantainer |
     | ------------- | ------------- | :------------- | :----- | :--- |
-    | Javascript    | reddit-clone-api-js | [github]() | complete | [husnulhamidiah](github.com/husnulhamidiah) |
+    | Javascript    | reddit-clone-api-js | [github]() | complete | [husnulhamidiah](https://github.com/husnulhamidiah) |
     | Ruby          | reddit-clone-api-rb | | development | |
     | Golang        | reddit-clone-api-go | | TBA | |
 
