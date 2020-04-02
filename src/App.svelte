@@ -13,6 +13,7 @@
 	import Sidebar from './Sidebar.svelte'
 	import Inbox from './Inbox.svelte'
 	import Leaderboard from './Leaderboard.svelte';
+	import Settings from './Settings.svelte'
 
 
 	onMount(async () => {
@@ -106,6 +107,7 @@
 				<Route path="/newcategory" component={ CategoryForm } />
 				<Route path="/inbox" component={ Inbox } />
 				<Route path="/leaderboard" component={ Leaderboard } />
+				<Route path="/settings" component={ Settings } />
 			</div>
 		</div>
 		<footer>
